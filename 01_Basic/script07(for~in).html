@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        /* 향상된 반복문 for ~ in */
+
+        var arr = ['hong', 'park', 'kim', 1,2,3,4];
+
+        /* ***주의*** 배열이나 객체의 index나 key값을 변수에 저장한다 */
+        for(var i in arr) { 
+            console.log(i, arr[i]);
+            //여기의 i 값은 index 값이다
+        }
+
+        /* JS의 객체 선언 { key:value, key:value, ...} */
+        var p = { name:'홍길동', age:20 }; //java의 map과 매우 유사한 형태
+
+        for(var i in p) {
+            console.log(i);  //key 값이 출력된다
+            console.log(p[i]); //value 값이 출력된다. value 값에 접근하려면 key[value]의 형태를 갖는다
+        }
+
+    </script>
+
+</body>
+</html>

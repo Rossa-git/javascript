@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+
+        /* 함수 호출 방법 */
+        /* 함수가 선언되기 전에 호출해도 문제되지 않는다. */
+        /* javascript의 특징인 hoisting 때문. */
+        /* 
+            Hoisting은 함수의 선언부를 물리적으로 코드 최상단에 위치시키는 것이 아니다.
+            코드의 위치는 그대로. 함수와 변수의 선언부가 컴파일 단계에서 메모리에 적재.
+
+            console.log(a);
+            var a = 3;
+            이라는 코드가 있다면 var a; 만 호이스팅 되고 a = 3; 은 올라가지 않는다.
+            그러므로 결과값은 undefined가 출력된다.
+        */
+        method1(); 
+        method2(1, 2);
+
+
+        /* 의도적으로 매개변수를 잘못 준 경우. */
+        /* 결과값이 어떻게 출력되든 간에, 잘못된 매개변수를 주어도 함수의 호출은 이루어진다. */
+        method2(1); //NaN
+        method2(1,2,3); //3
+        
+
+        var result = method3(10, 20);
+        console.log(result);
+
+        /* 함수 선언 방법 */
+        /* 매개변수가 없는 함수 */
+        function method1() {
+            console.log(1);
+        }
+
+        /* 매개변수가 있는 함수 */
+        function method2(a, b) {
+            console.log("method2 호출");
+            console.log(a + b);
+        }
+
+        /* 리턴이 존재하는 함수 */
+        function method3(a, b) {
+            console.log("method3 호출")
+            var result = a + b;
+            return result;
+        }
+
+        /* JS는 변수에 함수를 저장할 수 있다 */
+        var c = method3;
+        console.log(c); //함수가 저장
+        console.log(c(1,2));
+
+
+    </script>
+
+</body>
+</html>

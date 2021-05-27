@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        var num1 = '10'; //문자 10
+        var num2 = 10; //숫자 10
+        var num3 = 11;
+
+        console.log(num1 == num2); //true. 값 자체는 같은 '10' 이기 때문
+        console.log(num1 === num2); //false. 데이터 타입과 값이 같은지 확인
+
+        console.log(num1 != num2); //false. 값 자체만 비교
+        console.log(num1 !== num2); //true. 데이터 타입과 값을 비교
+
+
+
+        /* undefined, null 의 비교 */
+        /* 두 타입 모두 값이 없음을 뜻하긴 한다. */
+        var a; //undefined
+        var b = null; //null
+
+        console.log(a, b); //빠르게 값을 확인할 때 사용. 콤마(,)가 띄어쓰기로 치환되어 출력된다
+        console.log(a, b, a == b); //true. 두 변수는 값이 없다.
+        console.log(a, b, a === b); //false. 두 변수는 값은 없지만, undefined와 null은 다른 타입이다
+        
+        console.log(a, b, a != b); //false
+        console.log(a, b, a !== b); //true
+
+        
+        /* 삼항연산자 */
+        var x = '1';
+        var y = '2'; //문자여도 숫자 대소비교가 가능하다 대박~
+        console.log( x > y ? 'x가 큼' : 'y가 큼' );
+        console.log( x == y ? '문자 자체가 같음' : '문자 자체가 다름'); //문자비교도 ==으로 가능하다.
+    </script>
+    
+</body>
+</html>

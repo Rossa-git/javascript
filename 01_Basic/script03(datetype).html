@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var a = 10;
+        var b = 20;
+
+        a = 30; /* 내부적으로는 동일 변수를 선언한 것과 같다. */
+        var result = a + b;
+
+        console.log(result);  /* 50 */
+
+        var x = '20';
+        var y = 20;
+
+        console.log(x + y); /* 문자 + 숫자 = 문자 , 2020 */
+        console.log(20 + y); /* 숫자 + 숫자 = 숫자 , 40 */
+        console.log('10' + result); /* 문자 + 숫자 = 문자 1050*/
+
+        /* 데이터 타입, number, string, boolean, undefined, null */
+        var num1 = 3.14;
+        var num2 = 3;
+
+        console.log(typeof num1);
+        console.log(typeof num2); //결과값은 'number' 이다
+
+    
+        var str1 = "문자";
+        console.log(typeof str1); //string
+
+        var bool = true; // 0은 대표적으로 false를 표현하는 방식, 0을 제외한 나머지는 true
+        console.log(typeof bool); //boolean
+        
+        /* undefined은 변수선언은 했지만, 초기화하지 않은 경우에 나타난다 */
+        var un;
+        console.log(un); //undefined
+        console.log(typeof un); //변수 선언만 하고 초기화하지 않은 경우
+
+        /* null은 값은 저장했지만, 값이 존재하지 않을 때 나타난다 */
+        var tag = document.getElementById("xxx"); /* 문법상 틀린 내용은 없으나 가져올 값이 없다. */
+        console.log(tag); //null, 선언 후, 없는 값으로 '초기화'했기 때문에 null 값이 나타난다.
+        console.log(typeof tag); //object. 값은 null이지만 초기화 하려는 값(document.getElementById("xxx"))이 객체의 형태이기 때문
+        
+    </script>
+</body>
+</html>

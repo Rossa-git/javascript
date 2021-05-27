@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+
+        /* while() 문 */
+        var a = 1;
+        while(a <= 10) {
+            console.log(a);
+            a++;
+        }
+
+
+        /* for() 문 */
+        var arr = [];  // var arr = new Array();
+
+        /* for()문으로 1부터 10까지 값이 들어가도록 초기화하기 */
+        for(var i = 1; i <= 10 ; i++) {
+            arr.push(i); // java에서처럼 index로 접근하지 않아도 된다
+        }
+
+        console.log(arr);
+
+        for(var i = 0; i < arr.length ; i++) {
+            console.log(arr[i]);
+        }
+
+    </script>
+
+    <script>
+        for(var i = 2; i <= 9 ; i++) {
+            document.write("<p>" + i + '단 출력</p>');
+            for(var j = 1 ; j <= 9 ; j++) {
+                document.write(i + ' x ' + j + '=' + i*j + '<br/>');
+            }
+        }
+    </script>
+
+</body>
+</html>
