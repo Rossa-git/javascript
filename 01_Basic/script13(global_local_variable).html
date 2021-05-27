@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        /* javascript의 전역변수, 지역변수 */
+
+
+        /* 일반블럭 */
+        var num1 = 50;
+        if(true) {
+            var num1 = 60;
+            //~~~
+        }
+
+        /* var변수의 스코프는 함수이다. (일반 블럭안에서 사용되는 변수는 전역변수 취급) */
+        console.log(num1); //60
+
+
+        /* 함수블럭 */
+        var num2 = 100;
+        function add() {
+            /* 함수(function) 블럭 안에 있는 변수는 지역변수 취급한다 */
+            var num2 = 200; 
+        }
+        
+        console.log(num2); //100
+
+
+
+        /* ----- ES6 : let, const ----- */
+        /* 암묵적으로 문법은 혼용해서 사용하지 않는다. ES5는 ES5문법만 사용. */
+        /* let은 JS의 var변수의 문제점을 보완하기 위해서 나온 ES6문법 (중복x, 블록 스코프) */
+        let num3 = 100;
+        if(true) {
+            let num3 = 200; //지역변수
+        }
+        console.log(num3); // 100 - let 변수의 스코프는 블록(블록안에서 사용되는 변수는 지역변수 취급)
+
+
+        let num4 = 100;
+        function add2() {
+            let num4 = 200;
+        }
+        add2();
+        console.log(num4); // 100
+    </script>
+
+</body>
+</html>

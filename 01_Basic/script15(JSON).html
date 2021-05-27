@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+
+        /*
+         JSON Parsing : 원격에 있는 어떤 데이터를 읽어올때 문자열이 되어서 날아오는데,
+        그 값을 다시 사용하려면 object형태로 변경해야 한다
+        */
+
+        var data = [
+            {id: 'kkk123', title:'java'},
+            {id: 'aaa123', title:'jsp'},
+            {id: 'bbb123', title:'js'}
+        ];
+
+        console.log(data); //typeof : object
+
+        /* JSON을 문자열로 변경하는 방법 */
+        var result = JSON.stringify(data);
+        console.log(result); //typeof : string
+
+        /* 문자열을 JSON으로 변경하는 아법 */
+        var obj = JSON.parse(result);
+        console.log(obj);
+        
+        /* 주의!! 문자열을 제이슨형식으로 변경할때는 엄격한 규칙을 가진다. key, value를 반드시 쌍따옴표("") 로 감싸주어야한다 */
+        // JSON.parse('[키:"aaa123"]');
+        var result2 = JSON.parse('[{"키":"aaa123"}]');
+        console.log(result2);
+        </script>
+
+</body>
+</html>

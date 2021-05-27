@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        /* 
+        function func1() {
+            var a = 1;
+        } //a의 범위
+        console.log(a); // not defined, 오류발생
+        */
+        
+        function method() {
+            var a = "안녕";
+            
+            /*  
+            var result = function() {
+                console.log(a);
+            }
+            return result;
+            */
+           
+            /* 이런 형태로 return이 가능하다. '반환함수'라고도 한다*/
+            return function() { //JS함수는 실행환경의 상태를 기억한다
+                return a;
+            }
+        }
+
+
+        var b = method();
+        console.log(b); //함수
+        console.log('외부함수 method에 있는 지역변수 값:' + b()); //b함수를 호출해서 a에 접근
+        
+        /* 
+            클로저 : 내부 익명 함수가 외부함수 method()의 값을 바꿀 수 있는(접근할 수 있는) 키를 가지고 있다 
+            외부함수 밖에서 내부함수가 호출 되더라도 외부함수에 있는 지역변수 a에 접근이 가능한데, 이런 반환함수를 클로저라고 한다.
+            
+            javascript에는 접근제어자가 없는데,
+            클로저를 이용해서 private를 구현할 수 있다. (getter, setter)
+        */
+        
+
+        /* 클로저를 이용해서 getter, setter메서드로 활용 */
+        function test() {
+            var _name = "private변수" //_는 private변수로 사용함을 의미
+            console.log(_name);
+
+            return function(name) {
+                _name = name;
+                return _name;
+            }
+        }
+
+        var setter = test();
+        console.log(setter('이순신')); //리턴의 결과 자체는 함수
+        
+    </script>
+
+</body>
+</html>

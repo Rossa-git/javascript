@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+
+        /* 아래 함수를 익명함수로 변경하세요 */
+        //1
+        function check() {
+            alert("자바스크립트 익명함수");
+        }        
+        var af1 = function() {
+            alert("자바스크립트 익명함수");
+        }
+        var a = () => alert("자바스크립트 익명함수");
+        
+        //2
+        function method(a) {
+            if(a % 2 == 0) {
+                alert("짝수");
+            } else {
+                alert("홀수");
+            }
+        }
+
+        var af2 = function() {
+            if(a % 2 == 0) {
+                alert("짝수");
+            } else {
+                alert("홀수");
+            }
+        }
+        var b = (a) => {
+            if(a % 2 == 0) {
+                alert("짝수");
+            } else {
+                alert("홀수");
+            }
+        }
+
+        //3
+        //이름, 국어, 수학, 영어를 받아서 "이름 님의 평균은: xxx" 문자열을 반환하는 함수를 익명함수로 선언
+        var af3 = function(name, kor, math, eng) {
+            var avg = parseFloat((kor+math+eng) / 3);
+            var result = name+'님의 평균은: ' + avg;
+            return result;
+        }
+        var c = (name, kor, math, eng) => {
+            var avg = (kor+math+eng) / 3;
+            return name+'님의 평균은: ' + avg;
+        }
+
+
+        af1();
+        af2(5);
+        console.log(af3('홍길동', 20, 30, 40));
+    </script>
+
+</body>
+</html>

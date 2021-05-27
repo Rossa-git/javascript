@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /* 객체 선언 방법 */
+        var person = { 
+            name : '홍길동',
+            age : 20,
+            arr: [1,2,3,4]
+        };
+
+        /* 객체에 접근하는 방법1 */
+        console.log(person);
+        console.log(person.name);
+        console.log(person.age);
+        console.log(person.arr[3]);
+
+        /* 객체에 접근하는 방법2 */
+        console.log(person["name"]);
+        console.log(person["age"]);
+        console.log(person["arr"][3]);
+
+        console.log('--------------------------------');
+
+        var exam = {
+            kor: 80,
+            eng: 60,
+            math: 90
+        };
+
+        var hong = {
+            name: '홍길동',
+            exam: exam /* exam: {kor: 80, eng: 60, math: 90} */
+        }
+
+        console.log(hong.name);
+        console.log(hong.exam);
+        console.log(hong.exam.kor);
+
+        console.log(hong["name"]);
+        console.log(hong["exam"]);
+        console.log(hong["exam"]["kor"]);
+
+        //중첩 for문으로 subject에 있는 값을 전부 출력
+        var list = [ 
+            {
+                name: "홍길동",
+                age: 20,
+                subject: ["java", "jsp", "JS"],
+                birth: 20210526
+            },
+            {
+                name: "이순신",
+                age: 30,
+                subject: ["css", "DB"],
+                birth: 20210527
+            }
+
+        ];
+
+        for(var i = 0; i < list.length ; i++) {
+            for(var j = 0; j < list[i].subject.length ; j++) {
+                console.log(list[i].subject[j]);
+            }
+        }
+
+        /* 향상된 포문으로 만들어보기 */
+        console.log('향상된')
+        for(var i in list) {
+            for(var j in list[i]) {
+                if(j == "subject"){
+                    for(var k in list[i][j]){
+                        console.log(list[i][j][k]);
+                    }
+                }
+            }
+        }
+
+        /* 더 좋은 포문 */
+        for(var i in list) {
+            for(var j in list[i].subject) {
+                console.log(list[i].subject[j]);
+            }
+        }
+
+
+        /* 함수를 가지고 있는 객체 */
+        var obj = {
+            age: 10,
+            func: function() {
+                console.log("func");
+            }
+        }
+
+        console.log(obj.age);
+        obj.func();
+    </script>
+</body>
+</html>
