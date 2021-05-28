@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <!-- 1. 아래 checkbox버튼을 클릭했을 때, "동의했습니다" 경고창을 띄우고 value값을 확인 -->
+    <input type="checkbox" onclick="chk1(this);" value="1"> 조항1
+    <input type="checkbox" onclick="chk1(this);" value="2"> 조항2
+    <input type="checkbox" onclick="chk1(this);" value="3"> 조항3
+    <input type="checkbox" onclick="chk1(this);" value="4"> 조항4
+
+    <script>
+        function chk1(e) {
+            if(e.checked) {
+                alert(e.value + "번 조항에 동의했습니다");
+            }
+            console.log(e.value);
+        }
+    </script>
+
+    <hr>
+    <!-- 2. 확인 버튼을 눌렀을 때, input 태그의 공백여부, 기억하기의 체크여부를 확인 -->
+    ID: <input type="text" id="id">
+    기억하기: <input type="checkbox" id="remember">
+    <button type="button" id="check">확인</button>
+
+
+    <!-- 표준 이벤트 -->
+    <script>
+        var check = document.getElementById("check");
+        
+        check.addEventListener('click', chk2);
+        
+        function chk2() {
+            var id = document.getElementById("id");
+            var remember = document.getElementById("remember");
+            
+            console.log(id.value == '' ? '공백' : '공백아님');
+            console.log(remember.checked == true ? '체크됨' : '체크안됨');
+        }
+    </script>
+
+    <!-- 기본 이벤트 -->
+    <script>
+        var check = document.getElementById("check");
+        var id = document.getElementById("id");
+        var remember = document.getElementById("remember");
+        check.onclick = function() {
+            console.log(id.value == '' ? '공백' : '공백아님');
+            console.log(remember.checked == true ? '체크됨' : '체크안됨');
+        }
+    </script>
+    
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 스크립트 태그는 body 상단에 작성 -->
+
+    <script>
+        window.onload = function() {
+            var ok1 = document.getElementById("ok1");
+
+            /* 표준 방식 */
+            ok1.addEventListener('click', function() {
+                                            var ch1 = confirm("이동하시겠습니까?");
+
+                                            if(ch1 == true) {
+                                                location.href = "http://naver.com";
+                                            }
+                                        });
+
+            /* 기본 방식 */
+            /* 이런식으로도 가능하다 */
+            document.getElementById("ok2").onclick = function() {
+                var ch2 = confirm("이동하시겠습니까?")
+
+                if(ch2 == true) {
+                    location.href = "http://google.com";
+                }
+            }
+        }
+    </script>
+
+    <button id="ok1">네이버로 이동</button>
+    <button id="ok2">구글로 이동</button>
+</body>
+</html>

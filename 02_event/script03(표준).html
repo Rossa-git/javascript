@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <button type="button" id="bt">표준이벤트버튼</button>
+
+    <script>
+
+        var bt = document.getElementById("bt");
+
+        /* 
+            addEventListener(이벤트 종류, 실행시킬 함수)
+            여기서 이벤트 종류를 넣을 때 이벤트를 의미하는 접두어 'on'은 붙이지 않는다.
+        */
+
+        /*
+        bt.addEventListener('click', test);
+        
+        function test() {
+            console.log("표준이벤트");
+        }
+        */
+        
+        /* 이벤트리스너의 가장 큰 특징은 동일이벤트를 중첩해서 추가할 수 있다. 이벤트 발생시 연쇄적으로 실행된다 */
+        bt.addEventListener('click', () => console.log("익명함수가 들어올 수 있다"));
+        bt.addEventListener('click', function() { console.log("표준이벤트2")});
+
+    </script>
+
+</body>
+</html>
