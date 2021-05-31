@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        /* 크롬, 사파리, 엣지, 오페라 기준 <input type=number>의 value값 증감 스피너 없애기 */
+        input::-webkit-inner-spin-button,
+        input::-webkit-outer-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+        /* 파이어폭스 */
+        input[type=number] {
+            -moz-appearance: textfield;
+        }
+    </style>
+
+</head>
+<body>
+    <h3>자바스크립트 카운트(인라인방식으로)</h3>
+    <!-- type속성에 number을 넣으면 숫자만 사용할 수 있다. -->
+    <!-- <input type="number" value="0" id="result"> -->
+
+    <input type="text" value="0" id="result" readonly>
+    
+    <!-- 하나의 함수로 이벤트를 만들어보자 -->
+    <button type="button" onclick="calc(this);">+</button>
+    <button type="button" onclick="calc(this);">-</button>
+
+    
+    <script>
+        function calc(oper) {
+            var result = document.getElementById("result");
+            if(oper.innerHTML == '+') {
+                result.value++;
+            } else {
+                if(result.value <= 0) {
+                    alert('0보다 작을 수 없습니다');
+                    return;
+                } else {
+                    result.value--;
+                }
+            }            
+        }
+    </script>
+
+</body>
+</html>

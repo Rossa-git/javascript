@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        body {
+            text-align: center;
+        }
+        a {
+            color: black;
+        }
+        div {
+            border: 1px solid #777;
+        }
+        .box {
+            display: inline-block;
+            position: relative;
+            overflow: hidden;
+            padding: 5px;
+        }
+        .box > div {
+            width: 200px;
+            height: 300px;
+            margin: 5px 5px;
+            float: left;
+            text-align: left;
+        }
+    </style>
+
+</head>
+<body>
+    <!-- 밝게 버튼을 누르면 이미지와 같이, 
+        어둡게 버튼을 누르면 이미지와 같이 변경되도록 한다. -->
+
+    <h3>style속성 활용하기</h3>
+    <button type="button" id="dark">어둡게</button>
+    <button type="button" id="light">밝게</button>
+    <hr/>
+
+    <div class="box">
+        <div class="img">
+            <img src="img/1.jpg" width="200px" height="300px">
+        </div>
+        <div class="content">
+            <p>
+                자바스크립트는 객체 기반의 스크립트 프로그래밍 언어이다. 
+                이 언어는 웹 브라우저 내에서 주로 사용하며, 
+                다른 응용 프로그램의 내장 객체에도 접근할 수 있는 기능을 가지고 있다. 
+                또한 Node.js와 같은 런타임 환경과 같이 
+                서버 사이드 네트워크 프로그리밍에도 사용되고 있다.
+            </p>
+            <a href="https://ko.wikipedia.org/wiki/%EC%9E%90%EB%B0%94%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%8A%B8">위키백과</a>
+        </div>
+    </div>
+
+    <script>
+        var div = document.getElementsByTagName("div");
+        var body = document.getElementsByTagName("body");
+        var a = document.getElementsByTagName("a");
+
+        var dark = document.getElementById("dark");
+        dark.onclick = function() {
+            body[0].style.backgroundColor = "black";
+            body[0].style.color = "white";
+
+            for(var i = 0; i < div.length; i++) {
+                div[0].style.borderColor = "white";
+            }
+            
+            for(var i = 0; i < a.length; i++) {
+                a[0].style.color = "white"
+            }
+
+        }
+
+        var light = document.getElementById("light");
+        light.onclick = function() {
+            body[0].style.backgroundColor = "white";
+            body[0].style.color = "black";
+
+            for(var i = 0; i < div.length; i++) {
+                div[0].style.borderColor = "#777";
+            }
+            
+            for(var i = 0; i < a.length; i++) {
+                a[0].style.color = "black";
+            }
+        }
+    </script>
+</body>
+</html>

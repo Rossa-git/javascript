@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form>
+        좌석: 
+        <input type="checkbox" name="seat" value="1">1
+        <input type="checkbox" name="seat" value="2">2
+        <input type="checkbox" name="seat" value="3">3
+        <input type="checkbox" name="seat" value="4">4
+        <input type="checkbox" name="seat" value="5">5
+        <input type="checkbox" name="seat" value="6">6
+        <input type="checkbox" name="seat" value="7">7
+        <input type="checkbox" name="seat" value="8">8
+        <br/>
+        <button type="button" id="btn">예약</button>
+    </form>
+
+    <script>
+        /* 
+            예약버튼 클릭시 좌석이 최소 1개 이상 체크되어 있지 않다면,
+            경고창을 띄우는 코드를 작성.
+            또, 체크된 태그의 값이 있다면 리스트에 저장하고 json형태의 문자열로 변경
+        */
+        
+        /* 내가 쓴 답 */
+        /*
+        var btn = document.getElementById("btn");
+        btn.onclick = function() {
+            var flag = false;
+            var list = [];
+            var seat = document.getElementsByName("seat");
+            for(var i = 0; i < seat.length; i++) {
+                if(seat[i].checked) {
+                    flag = true;
+                    list.push({seat[i].value);
+                } 
+            }
+            
+            if(flag == false) {
+                alert("최소 1개 이상의 좌석을 선택해주세요");
+            } else {
+                console.log(JSON.stringify({arr : list}));
+            }
+        }
+        */
+
+        /* 강사님 답 */
+        var btn = document.getElementById("btn");
+        btn.onclick = function() {
+            var checkbox = document.querySelectorAll("input[name='seat']");
+            // var checkbox = document.getElementsByName("name");
+            
+            var bool = true;
+            var list = new Array();
+
+            for(var i = 0; i < checkbox.length; i++) {
+                
+                if(checkbox[i].checked) {
+                    bool = false; // 체크요소가 존재한다는 의미
+                    list.push(checkbox[i].value);
+                }
+
+            }
+
+            if(bool) {
+                alert("좌석체크는 필수 입니다");
+            } else {
+                var data = JSON.stringify({data: list});
+                console.log(data);
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        선택상자 안의 계절을 선택하면 이미지가 계절에 맞는 이미지로 변경되도록 한다.
+        색상을 선택하면 이미지의 외곽선 색상이 변경되도록 한다.
+     -->
+    <form>
+        <img src="img/1.jpg" class="img" width="200" style="border: 3px solid black"><br/>
+        
+        <select class="select">
+            <option value="img/1.jpg">봄</option>
+            <option value="img/2.jpg">여름</option>
+            <option value="img/3.jpg">가을</option>
+            <option value="img/4.jpg">겨울</option>
+        </select>
+        
+        <span>변경할 색상</span>
+        <input type="color" class="input">
+    </form>
+
+    <script>
+        /* 내가 쓴 답 */
+        /*
+        var select = document.querySelector(".select");
+        var img = document.getElementsByTagName("img");
+        // console.log(select.length)
+        select.onchange = function() {
+            img.src = select.value;
+        }
+        
+        var input = document.querySelector(".input");
+        input.onchange = function() {
+            img[0].style.borderColor = input.value;
+        }
+        */
+        
+        
+        /* 강사님 답 */
+        var img = document.querySelector(".img");
+
+        var select = document.querySelector(".select");
+        select.onchange = function() {
+            img.src = select.value;
+        }
+
+        var input = document.querySelector(".input");
+        input.onchange = function() {
+            img.style.border = "3px solid" + input.value;
+        }
+    </script>
+        
+</body>
+</html>

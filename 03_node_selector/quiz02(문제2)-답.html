@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <!-- 비밀번호, 아이디가 변경될 때마다 예시화면처럼 구현 -->
+    <!-- 예시화면
+        아이디가 4글자 미만, 비밀번호가 9글자 미만일 때 
+        조건을 만족해야한다는 메세지 출력.
+        
+        조건에 만족된 상태는 <input>의 border가 초록색
+        조건에 만족되지 않은 상태는 <input>의 border가 빨간색이다.
+    -->
+    <!-- border-color속성과 innerHTML으로 처리 -->
+
+    <section>
+        <form>
+
+            <label>아이디</label>
+            <input type="text" name="id" id="id"><br/>
+            <span class="idMsg"></span><br/>
+
+            <label>비밀번호</label>
+            <input type="password" name="pw" id="pw"><br/>
+            <span class="pwMsg"></span><br/>
+            
+        </form>
+    </section>
+
+    <script>
+        /* 내가 쓴 답 */
+        /*
+        var id = document.getElementById("id");
+        var idMsg = document.querySelector(".idMsg");
+        
+        id.oninput = function() {
+
+            if(id.value.length < 4) {
+                idMsg.innerHTML = "아이디는 4글자 이상 입력해주세요";
+                id.style.border = "1px solid red";
+            } else {
+                idMsg.innerHTML = "";
+                id.style.border = "1px solid green";
+            }
+        }
+
+        var pw = document.getElementById("pw");
+        var pwMsg = document.getElementsByClassName("pwMsg");
+
+        pw.oninput = function() {
+
+            if(pw.value.length < 8) {
+                pwMsg[0].innerHTML = "비밀번호는 8글자 이상 입력해주세요";
+                pw.style.border = "1px solid red";
+            } else {
+                pwMsg[0].innerHTML = ""
+                pw.style.border = "1px solid green";
+            }
+
+        }
+        */
+
+        /* 강사님 답 */
+        var idMsg = document.querySelector(".idMsg");
+        var id = document.getElementById("id");
+        id.onkeyup = function() {
+            if(id.value.length < 4) {
+                id.style.borderColor = "red";
+                idMsg.innerHTML = "아이디는 4글자 이상 입력해주세요";
+            } else {
+                idMsg.innerHTML = "";
+                id.style.borderColor = "green";
+            }
+        }
+
+        var pwMsg = document.querySelector(".pwMsg");
+        var pw = document.getElementById("pw");
+
+        pw.oninput = function() {
+
+            if(pw.value.length < 8) {
+                pwMsg[0].innerHTML = "비밀번호는 8글자 이상 입력해주세요";
+                pw.style.borderColor = "red";
+            } else {
+                pwMsg[0].innerHTML = ""
+                pw.style.borderColor = "green";
+            }
+
+        }
+    </script>
+</body>
+</html>
