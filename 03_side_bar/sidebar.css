@@ -1,0 +1,56 @@
+* {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.sidenav {
+    position: fixed;
+    left: 0%;
+    top: 50px;
+    width: 200px;
+    height: 100%;
+    background-color: #263238;
+    z-index: 30;
+
+    padding-top: 50px;
+
+    overflow: hidden;
+    transition: all 0.5s ease-in-out;
+}
+
+@media (max-width:767px) {
+    .sidenav {
+        width:0px;
+    }
+}
+
+.sidenav a {
+    display: block;
+    width: 200px;
+    box-sizing: border-box;
+    padding: 10px 20px;
+    color: #fff;
+    text-decoration: none;
+}
+
+.sidenav a:hover {
+    background-color: #00acac;
+}
+
+.menuBtn {
+    position: fixed;
+    left: 0;
+    top: 50px;
+    width: 50px;
+    height: 50px;
+    z-index: 50; /* 최상단 */
+    color: #fff;
+    background-color: #263238;
+
+    display: block;
+    text-align: center;
+    line-height: 50px; /* height와 같은 값으로 넣어 중앙정렬 */
+
+    cursor: pointer; /* 마우스를 올렸을때 손가락마우스포인터가 나오도록 */
+}

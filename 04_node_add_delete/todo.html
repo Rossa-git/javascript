@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>할일 목록 만들기</h2>
+    <div class="nameLine">
+        <span><h3></h3></span>
+        <input type="text" placeholder="당신의 이름을 적으세요">
+        <button type="button">확인</button>
+    </div>
+    <div class="todoLine">
+        <input type="text" placeholder="당신의 할일을 적으세요">
+        <button type="button">확인</button>
+    </div>
+    <div>
+        <ul class="todoList">
+        </ul>
+    </div>
+
+    <script>
+        var nameInput = document.querySelector(".nameLine > input")
+        var nameBtn = document.querySelector(".nameLine > button");
+        
+        nameBtn.onclick = function() {
+            if(nameInput.value == "") {
+                alert("공백으로 입력할 수 없습니다.");
+            } else {
+                var name = document.querySelector(".nameLine > span > h3");
+                
+                name.innerHTML = nameInput.value + "님 어서오세요";
+
+                nameInput.style.display = "none";
+                nameBtn.style.display = "none";
+            }
+        }
+
+        var index = 0;
+        var todoInput = document.querySelector(".todoLine > input");
+        var todoBtn = document.querySelector(".todoLine > button");
+        var todoList = document.querySelector(".todoList");
+
+        todoBtn.onclick = function() {
+            if(todoInput.value == "") {
+                alert("공백으로 입력할 수 없습니다.");
+            } else {
+                var li = document.createElement("li");
+                var btn = '<button type="button" onclick="rmTodo(this)">X</button>';
+                li.value = index++;
+                li.innerHTML = todoInput.value + btn;
+                todoList.appendChild(li);
+            }
+        }
+        
+        function rmTodo(e) {
+            e.parentElement.remove();
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        table {
+            border-spacing: 0; /* 셀과 셀 사이의 간격을 0으로, border와 border 사이의 간격 */
+            border-collapse: collapse; /* border와 border가 붙어서 굵어지는 외곽선을 하나의 외곽선으로 처리 */
+        }
+        thead th {
+            border: 1px solid #777;
+        }
+    </style>
+
+</head>
+<body>
+    <!-- 
+        테이블 아래에 5개추가하기, 1개추가하기 버튼을 만든다
+        해당 버튼을 누르면 개수만큼 테이블의 행을 추가한다. (이미치참고)
+    -->
+    <table>
+        <thead>
+            <tr>
+                <th>교사</th>
+                <th>훈련과목</th>
+                <th>담당자</th>
+                <th>훈련내용</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><input type="text" size="3"></td>
+                <td><input type="text"></td>
+                <td><input type="text" size="5"></td>
+                <td><input type="text"></td>
+            </tr>
+        </tbody>
+    </table>
+    <button type="button" onclick="addrow(1)">1개추가하기</button>
+    <button type="button" onclick="addrow(5)">5개추가하기</button>
+
+    <script>
+        
+        var table = document.querySelector("table");
+        function addrow(a) {
+            for(var i = 1; i <= a; i++) {
+                var tbody = document.createElement("tbody");
+                var tr = document.createElement("tr");
+                for (var j = 1; j <= 4; j++) {
+                    var td = document.createElement("td");
+                    var input = document.createElement("input");
+
+                    if (j == 1) {
+                        input.size = "3";
+                        td.appendChild(input);
+                    } else if (j == 3) {
+                        input.size = "5";
+                        td.appendChild(input);
+                    } else {
+                        td.appendChild(input);
+                    }
+
+                    tr.appendChild(td);
+                }
+                tbody.appendChild(tr);
+                table.appendChild(tbody);
+            }
+        }
+        
+    </script>
+</body>
+</html>
