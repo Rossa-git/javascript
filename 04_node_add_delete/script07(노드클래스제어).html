@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <!-- 이 버튼은 클래스이름 btn, btn-default을 지니고 있다 -->
+    <button type="button" class="btn btn-default" id="btn">버튼</button>
+
+    <script>
+        var btn = document.getElementById("btn");
+
+        console.log(btn.type);
+        console.log(btn.id);
+
+        /* class는 예약어이기 때문에 요소에서 class값을 가져오려면 다른 방법을 사용해야한다 */
+        //console.log(btn.class);
+
+        // console.dir(btn);
+        /* 클래스와 관련된 속성을 찾아보니 className 를 발견했다.*/
+
+        console.log(btn.className); 
+        /* 
+        출력 결과는 
+            btn btn-default
+        이대로는 사용할 수 없다.
+        */
+
+        console.log(btn.classList);
+        /* 
+        출력 결과는
+            DOMTokenList [ "btn", "btn-default" ]
+        리스트의 형태로 반환되었다.
+         */
+
+
+        //<prototype>, __proto__ : 눈에 안보이는 원본 객체에 정의되어 있는 기능(함수)
+        btn.classList.add("newBtn"); //사용자 클래스를 추가
+        console.log(btn.classList); //클래스가 추가된 것을 확인할 수 있다
+
+        btn.classList.remove("newBtn"); //클래스 삭제
+        console.log(btn.classList); //클래스 삭제된 것을 확인할 수 있다
+
+        console.log(btn.classList.contains("newBtn")); //클래스 존재 유무 확인, 있으면 true, 없으면 false를 반환
+                
+    </script>
+</body>
+</html>

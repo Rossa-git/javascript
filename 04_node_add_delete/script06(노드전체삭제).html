@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table {
+        /* 셀과 셀 사이의 간격을 0으로, border와 border 사이의 간격 */
+            border-spacing: 0; 
+    
+        /* border와 border가 붙어서 굵어지는 외곽선을
+        하나의 외곽선으로 처리 */
+            border-collapse: collapse; 
+        }
+        td, th {
+            border: 1px solid #777;
+        }
+    </style>
+</head>
+<body>
+    <button type="button" class="del">전체삭제</button>
+    <table>
+        <thead>
+        <tr>
+            <th><input type="checkbox" class="allCheck"></th>
+            <th>번호</th>
+            <th>이름</th>
+            <th>내용</th>
+        </tr>
+        </thead>
+        <tbody class="tableList">
+            <tr>
+                <td>
+                    <input type="checkbox" class="check">
+                </td>
+                <td>1</td>
+                <td>홍길동</td>
+                <td>안녕하세요</td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="checkbox" class="check">
+                </td>
+                <td>2</td>
+                <td>강감찬</td>
+                <td>안녕하세요</td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="checkbox" class="check">
+                </td>
+                <td>3</td>
+                <td>홍길자</td>
+                <td>안녕하세요</td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="checkbox" class="check">
+                </td>
+                <td>4</td>
+                <td>신사임당</td>
+                <td>안녕하세요</td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="checkbox" class="check">
+                </td>
+                <td>5</td>
+                <td>이순신</td>
+                <td>안녕하세요</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <script>
+        //전체선택기능
+        var allCheck = document.querySelector(".allCheck");
+        var list = document.querySelectorAll(".check");
+
+        allCheck.onclick = function() {
+
+            console.log(allCheck.checked);
+            if(allCheck.checked) {
+                for(var i = 0; i < list.length; i++) {
+                    list[i].checked = true;
+                }
+            } else {
+                for(var i = 0; i < list.length; i++) {
+                    list[i].checked = false;
+                }
+            }
+
+        }
+        
+        //.del 버튼을 눌렀을 때 checked를 선택적으로 삭제
+        var del = document.querySelector(".del");
+        del.onclick = function() {
+            for(var i = 0; i < list.length ; i++) {
+                if(list[i].checked) {
+                    list[i].parentElement.parentElement.remove();
+                }
+            }
+        }
+    </script>
+</body>
+</html>

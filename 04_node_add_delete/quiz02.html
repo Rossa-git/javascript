@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>할일 목록 만들기</h2>
+    <div class="nameForm">
+        <h2 class="nameTitle"></h2>
+        <input type="text" placeholder="이름을 입력하세요">
+        <button type="button">확인</button>
+    </div>
+    <div class="todoForm">
+        <input type="text" placeholder="할일을 작성하세요">
+        <button type="button">확인</button>
+    </div>
+    <ul class="todoList">
+
+    </ul>
+
+    <script>
+        var nameForm = document.querySelector(".nameForm");
+        var nameTitle = document.querySelector(".nameTitle");
+        var nameInput = nameForm.querySelector("input");
+        var nameButton = nameForm.querySelector("button");
+
+        nameButton.addEventListener("click", regist);
+
+        function regist() {
+            nameTitle.innerHTML = nameInput.value + "님 안녕하세요";
+
+            /*
+            //삭제하는 방법
+            nameInput.remove();
+            nameButton.remove();
+            */
+            
+            //style 속성 변경
+            nameInput.style.display = "none";
+            nameButton.style.display = "none";
+        }
+
+
+        var todoForm = document.querySelector(".todoForm");
+        var todoList = document.querySelector(".todoList");
+        var todoInput = todoForm.querySelector("input");
+        var todoButton = todoForm.querySelector("button");
+
+        todoButton.addEventListener("click", createTodo);
+        function createTodo() {
+            var text = todoInput.value;
+            todoInput.value = ""; //공백처리
+
+            //ul아래에 삽입될 li태그를 생성
+            var li = document.createElement("li");
+            li.innerHTML = text;
+
+            //버튼생성
+            var button = document.createElement("button");
+            button.innerHTML = "X";
+            button.addEventListener("click", deleteTodo);
+        
+            li.appendChild(button);
+            todoList.appendChild(li);
+        }
+
+        function deleteTodo() {
+            //문제점
+            //1. x버튼 클릭시 해당버튼 요소를 판별할 수 없다
+            //2. x버튼 클릭시 부모요소인 li를 삭제해야한다
+            alert("1");
+        }
+    </script>
+</body>
+</html>
