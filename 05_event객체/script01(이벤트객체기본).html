@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 02 번 폴더에서 배웠던 event와는 다르다 -->
+    <ul class="list">
+        <li>1.홍길동</li>
+        <li>2.이순신</li>
+        <li>3.홍길자</li>
+        <li>4.신사임당</li>
+        <li>5.김유신</li>
+    </ul>
+
+    <p class="result"></p>
+
+    <script>
+        /* 이벤트가 발생했을 때 실행되는 함수의 arguments객체에 event객체를 자동으로 넣어준다 */
+        /* event.target : event 객체에는 이벤트 관련된 많은 기능이 들어있는데, 그중에 이벤트가 발생한 곳을 확인하는 기능 */
+        var list = document.querySelectorAll(".list > li");
+        var result = document.querySelector(".result");
+
+        // list[0].onclick = function() {}
+        // list[1].onclick = function() {}
+        // list[2].onclick = function() {}
+        // list[3].onclick = function() {}
+        // list[4].onclick = function() {}
+
+        for(var i = 0; i < list.length; i++) {
+            list[i].onclick = function(/* event */) {
+                /* 매개변수의 event 객체는 생략해도 되고, 변수이름을 다르게 사용해도 된다 */
+                console.log(event);
+                console.log(event.target);
+                result.innerHTML = event.target.innerHTML;        
+            }
+        }
+    </script>
+</body>
+</html>

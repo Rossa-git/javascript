@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        .center {
+            text-align: center;
+        }
+
+        .content { 
+            width: 70%; /* 바깥 상자의 가로 길이 */
+            border: 1px solid #777; /* 바깥 상자의 외곽선 */
+            margin: 0 auto; /* 상자 가운데 정렬 */
+            overflow: hidden;
+        }
+        .left {
+            width: 50%; /* 안쪽 상자의 가로 길이 */
+            float: left; /* 왼쪽으로 쌓는다 */
+            box-sizing: border-box;
+        }
+        .content, .left { padding: 5px; }
+        .inner { 
+            border: 1px solid #777; 
+            height: 300px;
+            overflow: auto;
+        }
+
+        .non-display {
+            display: none;
+        }
+    </style>
+
+</head>
+<body>
+    <!-- 밝게 버튼을 누르면 이미지와 같이, 
+        어둡게 버튼을 누르면 이미지와 같이 변경되도록 한다. -->
+    
+    <script>
+        window.onload = function() {
+            var body = document.querySelector("body");
+            var all = document.querySelectorAll("h2, p, a");
+
+            var btn1 = document.getElementById("btn1");
+            btn1.onclick = function() {
+                if(btn1.className == "dark") {
+                    btn1.innerHTML = "밝게보기";
+
+                    body.style.backgroundColor = "black";
+                    for(var i = 0; i < all.length; i++) {
+                        all[i].style.color = "white";
+                    }
+
+                    btn1.className = "bright";
+                } else {
+                    btn1.innerHTML = "어둡게보기";
+
+                    body.style.backgroundColor = "white";
+                    for(var i = 0; i < all.length; i++) {
+                        all[i].style.color = "black";
+                    }
+                    btn1.className = "dark";
+                }
+            }
+
+            var btn2 = document.getElementById("btn2");
+            btn2.onclick = function() {
+                var p = document.querySelectorAll(".inner > p");
+
+                for(var i = 0 ; i < p.length ; i++) {
+                    if(p[i].classList.contains("non-display")) {
+                        btn2.innerHTML = "내용보기";
+                        p[i].classList.remove("non-display");
+                    } else {
+                        btn2.innerHTML = "이름보기";
+                        p[i].classList.add("non-display");
+                    }
+                }
+            }
+        }
+    </script>
+
+    <header>
+        <div class="center">
+            <h2>style속성 활용하기</h2>
+            <button type="button" class="dark" id="btn1">어둡게보기</button>
+            <button type="button" class="name" id="btn2">이름보기</button>
+        </div>
+    </header>
+
+    <section>
+        <div class="content"> <!-- 바깥 상자 -->
+            <div class="left"><!-- float:left로 쌓을 상자 -->
+                <div class="inner">
+                    <img src="img/1.jpg" width="100%", height="100%">
+                </div>
+            </div>
+            <div class="left"><!-- float:left로 쌓을 상자 -->
+                <div class="inner">
+                    <p class="cont">
+                        자바스크립트는 객체 기반의 스크립트 프로그래밍 언어이다. 
+                        이 언어는 웹 브라우저 내에서 주로 사용하며, 
+                        다른 응용 프로그램의 내장 객체에도 접근할 수 있는 기능을 가지고 있다. 
+                        또한 Node.js와 같은 런타임 환경과 같이 
+                        서버 사이드 네트워크 프로그리밍에도 사용되고 있다.
+                    </p>
+                    <p class="name non-display">
+                        홍길동<br>
+                        20세<br>
+                        능력단위<br>
+                        java, Oracle, JSP, CSS, javascript
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>

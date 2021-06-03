@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+    <style>
+        .func1 {width: 300px; height: 300px; background-color: red;}
+        .func2 {width: 200px; height: 200px; background-color: blue;}
+        .func3 {width: 100px; height: 100px; background-color: green;}
+    </style>
+
+</head>
+<body>
+    <h3>캡처링 vs 버블링</h3>
+
+    <div class="func1">
+        <div class="func2">
+            <div class="func3">func3(자식)</div>
+        </div>
+    </div>
+
+    <script>
+        //DOM은 이벤트 기본방식은 버블링이다
+        //버블링 : 부모, 자식 모두 이벤트가 걸려있을 때 이벤트가 자식 ~> 부모로 전파되는 특징
+
+        //3번 클릭시 -> 2 -> 1 로 전파된다
+        var func1 = document.querySelector(".func1");
+        var func2 = document.querySelector(".func2");
+        var func3 = document.querySelector(".func3");
+
+        //버블링 눈으로 보기
+        /*
+        func1.onclick = function() { alert("func1"); }
+        func2.onclick = function() {alert("func2"); }
+        func3.onclick = function() { 
+            alert("func3");
+            event.stopPropagation(); //버블링을 중단하는 방법
+        }
+        */
+
+        //캡처링 : 부모, 자식에 모두 이벤트가 걸려있을 때, 이벤트가 부모->자식으로 전파되는 특징
+        //캡처링은 사용할 일이 거의 없다
+        //addEventListener() 방식으로만 사용 가능
+        //addEventListener() 의 세번째 매개변수는 캡처링으로 동작할 것인지 여부. 기본값은 false(매개변수 넣지 않음)
+        func1.addEventListener("click", function() {
+            alert("func1");
+            // event.stopPropagation(); // 3번 버튼을 눌러도 캡처링으로 동작하기 때문에 func1만 실행되고 종료된다.
+        }, true);
+        func2.addEventListener("click", function() {
+            alert("func2");
+        }, true);
+        func3.addEventListener("click", function() {
+            alert("func3");
+        }, true);
+    </script>
+</body>
+</html>

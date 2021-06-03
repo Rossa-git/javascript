@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        .list > img {
+            width:100px;
+        }
+        .result > img {
+            width: 400px;
+        }
+    </style>
+</head>
+<body>
+    
+    <h3>다중이벤트 처리</h3>
+    <div class="list">
+        <img src="img/1.jpg">
+        <img src="img/2.jpg">
+        <img src="img/3.jpg">
+        <img src="img/4.jpg">
+    </div>
+
+    결과:
+    <div class="result">
+        <img src="img/1.jpg">
+    </div>
+
+
+    <script>
+        var img = document.querySelectorAll(".list > img");
+        var resImg = document.querySelector(".result > img");
+        for(var i=0; i < img.length; i++) {
+            img[i].onclick = function() {
+                resImg.src = event.target.src;
+            }
+        }
+
+    </script>
+</body>
+</html>
