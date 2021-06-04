@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <ul class="nameList">
+        <!-- 인위적으로 속성을 만들 수 있다 . data-OOO 같은 형식으로 만든다-->
+        <li><a href="#" data-info='{"id": "kkk", "age": "20"}'>홍길동</a></li>
+        <li><a href="#" data-info='{"id": "aaa", "age": "30"}'>이순신</a></li>
+        <li><a href="#" data-info='{"id": "bbb", "age": "40"}'>홍길자</a></li>
+        <li><a href="#" data-info='{"id": "ccc", "age": "50"}'>박찬호</a></li>
+    </ul>
+
+    <script>
+        var nameList = document.querySelector(".nameList");
+        nameList.onclick = function() {
+            event.preventDefault(); // a태그의 기본 이벤트를 제거
+            if(event.target.tagName != "A") return; //이벤트 타겟이 a태그가 아니면 작동하지 않는다
+
+            /* a의 속성을 가져와보자 */
+            console.log(event.target.href);
+            
+            //하이픈은 연산자로 작동하기 때문에 정상적으로 가져올 수 없다.
+            // console.log(event.target.data-info); 
+
+            /* >>>> data-OOO로 만들어진 사용자 속성은 어떻게 가져와야할까? */
+            console.dir(event.target); 
+            /* dataset: DOMStringMap { info → "1" } 
+                항목을 찾았다! */
+            
+            /* data-OOO로 만들어진 속성은 dataset에 key-value로 저장된다 */
+            console.log(event.target.dataset); //객체로 가져오게 된다
+            
+            //객체에서 값을 가져오는 방법을 다시 떠올려보자.
+            console.log(event.target.dataset["info"]);
+            console.log(event.target.dataset.info);
+
+            /* >>>> 이렇게 만들어진 사용자 속성에 리터럴 값만 넣을 수 있을까? */
+            //JSON을 떠올려보자. "{id: 'kkk', age: '20'}" 값은 분명 문자열이지만 객체 형태로 parse할 수 있다.
+
+            var data = JSON.parse(event.target.dataset.info);
+            console.log(data); //data-info에 "{id: 'kkk', age: '20'}" 라고 들어있다면 당연히 오류가 뜬다.
+
+            //JSON형식을 철저히 지키자. key와 value값은 쌍따옴표("")로 감싸져 있어야한다. '"key" : "value"' 형식으로 바꿔야한다.
+            
+        }
+    </script>
+
+</body>
+</html>
