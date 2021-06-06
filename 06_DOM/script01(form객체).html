@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 폼객체는 document의 하위 객체이기때문에 유일하게 name속성으로 form요소에 접근이 가능하다 -->
+    <form name="validateForm">
+        아이디: <input type="text" name="id"><br/>
+        비밀번호: <input type="password" name="pw"><br/>
+
+        통신사
+        <select name="phone">
+            <option>선택</option>
+            <option>010</option>
+            <option>011</option>
+            <option>016</option>
+            <option>017</option>
+            <option>018</option>
+        </select>
+        <br>
+
+        자기소개:
+        <textarea name="itro"></textarea>
+        <br>
+
+        분야:
+        <input type="checkbox" name="inter">java
+        <input type="checkbox" name="inter">jsp
+        <input type="checkbox" name="inter">js
+        <input type="checkbox" name="inter">database
+
+        <br>
+        <button type="button" id="regist">가입</button>
+    </form>
+
+    <script>
+        var regist = document.getElementById("regist");
+        regist.onclick = function() {
+            console.log(document.validateForm); // 이렇게 form에 접근 가능하다
+
+            /* 폼 하위 요소들의 id로 요소에 아래와같이 접근이 가능하다.*/
+            console.log(document.validateForm.id);
+            console.log(document.validateForm.pw);
+            console.log(document.validateForm.phone);
+            console.log(document.validateForm.intro);
+            
+            if(document.validateForm.id.value == '') { //공백여부나 정규표현식이 들어간다
+                document.validateForm.id.focus(); //커서가 input#id 로 이동한다
+                return; // 함수 종료
+            } else if (confirm("가입하시겠습니까?")) {
+                document.validateForm.submit(); //js서브밋
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //날짜생성
+        var date = new Date();
+        var date2 = new Date("2021-06-04");
+        var date3 = new Date("2021-06-04 16:20:15");
+        var date4 = new Date(16227913522275); //밀리초 기준시
+        
+        console.log(date);
+        console.log(date2);
+        console.log(date3);
+        console.log(date4);
+
+        //날짜기준 - 년, 월, 일, 시, 분, 초를 숫자 형태로 얻는 방법
+        console.log(date.getFullYear()); //년
+        console.log(date.getMonth() + 1); //+1 해줘야 현재 월 을 얻을 수 있다.
+        console.log(date.getDate()); //일
+        console.log(date.getHours()); //시간
+        console.log(date.getMinutes()); //분
+        console.dir(date.getSeconds()) ; //초
+        console.log(date.getTime()); //밀리초
+
+
+        //ex) 1시간 이전에 작성한 것은 방금전, 하루 이전 작성은 xx시간전, 하루가 넘어간 경우는 날짜 표기
+
+        //1622791352275
+        var now = new Date(); //현재시간
+        var nowMillis = now.getTime(); //현재시간 밀리초로 구하기
+
+        var millis = 1622791352275;
+        var gap = nowMillis - 1622791352275;
+
+        var time;
+        /* 밀리초로 계산하기 때문에 1000을 곱해주어야 한다 */
+        if(gap < 24 * 60 * 60 * 1000) { //1일 이하인 경우
+
+            if(gap < 60 * 60 * 1000) { //1시간 이전
+                time = "방금 전"
+            } else { //1시간 이후
+                time = parsInt(gap / 60 * 60 * 1000) + "시간전"; // 
+            }
+
+        } else { //1일 이상인 경우
+
+            var today = new Date(millis);
+            var year = today.getFullYear();
+            var month = today.getMonth();
+            var day = today.getDate();
+            var hour = today.getHours();
+            var minute = today.getMinutes();
+            var second = today.getSeconds();
+
+            time = year + "년" + (month < 10 ? "0" + month : month) + "월" + day + "일" + hour + "시" + minute + "분" + second + "초";
+        }
+
+        console.log(time);
+    </script>
+</body>
+</html>
