@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .main-banner {
+            background: linear-gradient(90deg,#0c151c 1.3125rem,transparent 1%) 50%,linear-gradient(#0c151c 1.3125rem,transparent 1%) 50%,#263747;
+            background-size: 1.5rem 1.5rem;
+            padding: 6rem 0;
+            color: #fff;
+            text-align: center;
+        }
+
+        /* 내가 쓴 답
+        .main-banner img {
+            position: relative;
+            opacity: 0;
+            top: -100px;
+        }
+        
+        .main-banner .active {
+
+            position: relative;
+            opacity: 1;
+            top: 0;
+            transition: all 0.5s ease-in-out;
+        }
+        */
+        
+        /* 아래는 강사님 답 */
+        .main-banner img {
+            display: none;           
+            position: relative; /* 내 위치 기반으로  */
+            animation: topIn 0.5s linear;
+        }
+
+        @keyframes topIn {
+            from {
+                opacity: 0;
+                top: -100px;
+            } to {
+                opacity: 1;
+                top: 0;
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <div class="main-banner">
+        <img src="img/1.jpg" width="300">
+        <img src="img/2.jpg" width="300">
+        <img src="img/3.jpg" width="300">
+        <img src="img/4.jpg" width="300">
+    </div>
+
+    <script>
+        /* 내가 쓴 답
+        var num = 0;
+        function fadein() {
+            if(num === 4) clearInterval(stop);
+            var img = document.querySelectorAll(".main-banner > img");
+            img[num++].classList.add("active");            
+        }
+        
+        //즉시 실행 함수
+        (function() {
+            setInterval(fadein, 1000);
+        })();
+        */
+
+        //강사님 답
+        var stop;
+        var index = 0;
+        var list = document.querySelector(".main-banner");
+        function changeImg() {
+            list.children[index].style.display = "inline";
+            index++;
+
+            if(index == list.children.length) clearInterval(stop);
+        }
+
+        (function() {
+            stop = setInterval(changeImg, 500);
+        })();
+    </script>
+</body>
+</html>

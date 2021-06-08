@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <button type="button" class="popup">새창열기</button>
+
+    <script>
+        var popup = document.querySelector(".popup");
+        popup.onclick = function() {
+
+            // window.open("https://www.naver.com");
+            // window.open("https://naver.com", "네이버창", "width=300, height=300, left=100, top=100");
+            window.open("../06_DOM/script01(form객체).html", "팝업창", "width=500, height=300");
+
+            //현재창을 끄고 싶다면 window.close()
+
+        }
+    </script>
+
+</body>
+</html>

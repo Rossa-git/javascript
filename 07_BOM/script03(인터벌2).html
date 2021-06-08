@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <div class="slide">
+        <img src="img/slide1.jpg" class="bgImg">
+
+    </div>
+
+    <script>
+        var num = 1
+        function changeImg() {
+            //img 생성하고 조립
+            var img = document.createElement("img");
+            img.src = "img/slide"+ ++num + ".jpg";
+            img.classList.add("bgImg");
+
+            //기존 이미지 삭제
+            var slide = document.querySelector(".slide");
+            slide.firstElementChild.remove(); //첫번째 요소 삭제
+
+            //이미지 추가
+             slide.appendChild(img);
+             if(num === 4) num = 1;
+        }
+        
+        (function() {
+            setInterval(changeImg, 3000);
+        })();
+
+    </script>
+</body>
+</html>

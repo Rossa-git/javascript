@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <button type="button" class="stopTime">스탑</button>
+
+    <script>
+        /* 3초뒤에 경고창이 뜬다. interval 처럼 반복되지 않는다 */
+        /*
+        var stop = setTimeout(function() {
+            alert("hello world");
+        }, 3000);
+        
+        var stopTime = document.querySelector(".stopTime");
+        stopTime.onclick = function() {
+            clearTimeout(stop);
+        }
+        */
+        
+
+        /*
+        // setTimeout의 실행함수에 매개변수를 주고싶다면?
+        setTimeout(test("hello world") , 3000 );
+        
+        // 함수를 리턴해버리면 된다.
+        function test(text) {
+            return function() {
+                alert(text);
+            }
+        }
+        */
+
+
+
+
+        /*
+        (function(text) {
+            setTimeout(function() { // <- 여기에 매개변수를 넣으면 클로저때문에 값이 나오지 않는다. (undefind)
+                alert(text);
+            }, 3000);
+        })('hello world');
+        */
+
+    </script>
+
+
+    <!-- 클로저 이해가 필수인거 같다.  -->
+    <script>
+        // for(var i = 1; i <= 4; i++) {
+        //     (function(num){
+        //         setTimeout(function(){
+        //             alert(num);
+        //         }, 1000)
+        //     })(i);
+        // }
+
+
+        for(var i = 1; i <= 4 ; i++) {
+            (function() {
+                setTimeout(test(i), 1000);
+                function test(x) {
+                    return function() {
+                        alert(x);
+                    }
+                }
+            })(i);
+        }
+    </script>
+    
+</body>
+</html>

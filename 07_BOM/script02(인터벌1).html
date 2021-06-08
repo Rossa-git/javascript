@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button class="stopInterval">인터벌중지</button>
+    <script>
+        //일정시간마다 반복실행 - (실행함수, 인터벌시간:밀리초)
+        setInterval(function() {
+            console.log(1);
+        }, 1000)
+
+        
+
+        // function aa() {
+        //     console.log(1);
+        // }
+        var stopInterval = document.querySelector(".stopInterval");
+        stopInterval.onclick = function() {
+            // clearInterval("중지할 인터벌 변수");
+
+            clearInterval(stop);
+        }
+        
+    </script>
+</body>
+</html>

@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <h1>가능하시다면 피드백 꼭 부탁드립니다</h1>
+
+    <h2>시간을 선택하세요</h2>
+    <div class="timer-menu">
+    </div>
+
+    <div>
+        <h1><span class="hour">00</span>:<span class="min">00</span>:<span class="sec">00</span></h1>
+    </div>
+
+    <script>
+        var timerMenu = document.querySelector(".timer-menu");
+
+        /* select */
+        var selHour = document.createElement("select");
+        var selMinute = document.createElement("select");
+        var selSecond = document.createElement("select");
+
+        for(var i = 99; i >= 0 ; i--) {
+            var option = document.createElement("option");
+            option.innerHTML = i > 10 ? i : "0" + i;
+            selHour.add(option, 0);
+        }
+        selHour.options[0].selected = true;
+        
+        for(var i = 60; i >= 0 ; i--) {
+            var option = document.createElement("option");
+            option.innerHTML = i > 10 ? i : "0" + i;
+            selMinute.add(option, 0);
+        }
+        selMinute.options[0].selected = true;
+        
+        for(var i = 60; i >= 0 ; i--) {
+            var option = document.createElement("option");
+            option.innerHTML = i > 10 ? i : "0" + i;
+            selSecond.add(option, 0);
+        }
+        selSecond.options[0].selected = true;
+
+
+        timerMenu.appendChild(selHour);
+        timerMenu.appendChild(selMinute);
+        timerMenu.appendChild(selSecond);
+        /* select - END */
+        
+        /* button */
+        var timeSetBtn = document.createElement("button");
+        timeSetBtn.innerHTML = "시간설정";
+
+        var timerBtn = document.createElement("button");
+        timerBtn.innerHTML = "타이머시작";
+        
+        timerMenu.appendChild(timeSetBtn);
+        timerMenu.appendChild(timerBtn);
+        /* button - END */
+
+        /* timeSet event */
+        var hour = document.querySelector(".hour");
+        var min = document.querySelector(".min");
+        var sec = document.querySelector(".sec");
+        
+        var flag = true;
+        
+        timeSetBtn.addEventListener("click", timeSet);
+        function timeSet() {
+            if(!flag) clearInterval(stop);
+            toggle();
+
+            hour.innerHTML = selHour.value;
+            min.innerHTML = selMinute.value;
+            sec.innerHTML = selSecond.value;
+
+        }
+        /* timeSet event - END*/  
+        
+        /* startTimer event */
+        var stop;
+        timerBtn.onclick = timerStart;
+        
+        function timerStart() {
+            console.log("함수호출")
+            var h = hour.innerHTML;
+            var m = min.innerHTML;
+            var s = sec.innerHTML;
+
+            timerBtn.innerHTML = "일시정지";
+            timerBtn.onclick = timerPause;
+
+            stop = setInterval(function() {
+                flag = false;
+                console.log("인터발시작");
+                var time = (s*1) + (m * 60) + (h * 60 * 60);
+                console.log("time:" + time)
+                time--;
+
+                if(time == -1) {
+                    clearInterval(stop);
+                    flag = true;
+                    toggle();
+                    return;
+                }
+                
+                h = parseInt(time / 3600);
+                time -= h*3600;
+
+                m = parseInt(time / 60);
+                time -= m*60;
+
+                s = time;
+
+                hour.innerHTML = h < 10 ? "0" + h : h;
+                min.innerHTML = m < 10 ? "0" + m : m;
+                sec.innerHTML = s < 10 ? "0" + s : s;
+                
+
+            }, 1000);
+        }
+        /* startTimer event - END */
+
+        /* toggle */
+        function toggle() {
+            timerBtn.innerHTML = "타이머시작";
+            timerBtn.onclick = timerStart;
+        }
+
+        /* timerPause event */
+        function timerPause() {
+            clearInterval(stop)
+            event.target.innerHTML = "타이머시작";
+            event.target.onclick = timerStart;
+        }
+        /* timerPause event - END */
+    </script>
+</body>
+</html>
