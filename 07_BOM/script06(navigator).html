@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        console.dir(navigator)
+
+        // console.log(navigator.appName); //브라우저 이름
+        // console.log(navigator.appVersion) //브라우저 정보
+
+        // console.log(navigator.userAgent); //사용자의 브라우저 접속환경
+
+        //브라우저 판별
+        var browser = navigator.userAgent.toLowerCase();
+
+
+        // console.log(browser.indexOf("android")); //찾은 값의 index위치를 반환(없다면 -1)
+
+        if(browser.indexOf("android") != -1) {
+            console.log("안드로이드");
+        } else if(browser.indexOf("iphone") != -1) {
+            console.log("아이폰")
+        } else if(browser.indexOf("edge") != -1) {
+            console.log("엣지");
+        } else if(browser.indexOf("chrome") != -1) {
+            console.log("크롬");
+        } else if(browser.indexOf("firefox") != -1) {
+            console.log("불여우");
+        } // .. 익스플로러 환경 처리..
+
+    </script>
+
+</body>
+</html>
