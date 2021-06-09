@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <button type="button" onclick="ajax();">아작 요청</button>
+
+    <script>
+
+        function ajax() {
+
+            // 이게 왜 되는지 뜯어보자.
+            /*
+            fetch("hi.txt").then(function(response) {
+                response.text().then(function(a){
+                    console.log(a);
+                });
+            });
+            */
+
+
+
+            //1. 호출하면 호출구문이 오랜시간이 걸릴 수 있기 때문에, promise라는 내장객체를 반환해준다.
+            /* 
+                promise는 fetch를 사용했을 때, 상태 결과를 반환해주는 약속된 객체
+                1) pending(수행중)
+                2) fullfilled(성공)
+                3) reject(거절)
+            */
+            // var promise = fetch("hi.txt");
+            // console.dir(promise);
+
+
+
+            //2. then함수는 콜백함수를 담아서 결과를 반환하는 함수.
+            /* 
+                response안에는 성공/실패/url주소/데이터에 대한 정보와 같이 많은 내용이 있다.
+                콜백함수의 첫번째 매개변수 : 호출 했을 때, 응답의 결과(response)를 담을 변수
+            */
+            // fetch("hi.txt").then(function(response) {
+            //     if(response.status != 200) { //200은 성공
+            //         return;
+            //     }
+            // });
+
+
+
+            //3. response안에 text()함수는 응답 데이터를 문자열의 형식으로 바꾸는 함수
+            /* 
+                이 결과는 다시 promise이고 then을 이용해서 결과를 반환 
+            */
+            // fetch("hi.txt").then(function(response) {
+            //     // console.log( response.text() ); // 결과값은 promise 가 나온다.
+            //     response.text().then(function(text){
+            //         console.log(text);
+            //     });
+            // });
+
+
+
+
+            //4. 
+            fetch("hi.txt").then(func1);
+
+            function func1(response) {
+                console.log(1);
+            }
+
+            console.log(2);
+        }
+
+    </script>
+
+</body>
+</html>
