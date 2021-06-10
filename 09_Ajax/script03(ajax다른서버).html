@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        ul, li {
+            padding: 0;
+            margin: 0;
+        }
+        .list {
+            width: 80%;
+            margin: 0 auto;
+            overflow: hidden;
+        }
+        .list .movie {
+            height: 300px;
+            width: 33.3333%;
+            float: left;
+            box-sizing:border-box;
+            position: relative;
+        }
+        .list .movie img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100px;
+        }
+        .list .movie .inner {
+            padding-left: 100px;
+        }
+        .list .movie .summary {
+            height: 100px;
+            overflow: scroll;
+        }
+        .list .movie .geners li {
+            list-style: none;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="list">
+        <div class="movie">
+            <img src="xx">
+            <div class="inner">
+                <h3 class="title">제목</h3>
+                <h3 class="year">발행일</h3>
+                <ul class="geners">
+                    <li></li>
+                </ul>
+                <h3 class="summary">내용</h3>
+            </div>
+        </div>
+    </div>
+
+    
+    <script>
+        //연습용
+        //https://jsonplaceholder.typicode.com/todos/1
+
+        function ajax() {
+            fetch("https://yts.mx/api/v2/list_movies.json?sort_by=rating")
+                .then(function(response) {
+                    if(response.status != 200) {
+                        alert("네트워크상 오류가 발생했습니다. 다시 시도하세요");
+                    } else {
+                        return response.json();
+                    }
+                })
+                .then(function(jsonData){
+                    // console.log(jsonData);
+
+                    var list = document.querySelector(".list");
+                    
+
+                    var data = jsonData["data"]["movies"];
+                    // var data = jsonData.data.movies;
+                    
+                    // console.log(data)
+
+                    // console.log(data[0].title);
+                    // console.log(data[0].year);
+                    // console.log(data[0].genres);
+                    // console.log(data[0].summary);
+                    // console.log(data[0].medium_cover_image);
+
+
+                    //회전할때마다 처리물 작업
+                    var tag = ""; //누적할 문자열 변수
+                    for(var i = 0; i < data.length; i++){
+                        var title = data[i].title;
+                        var year = data[i].year;
+                        var genres = data[i].genres;
+                        var summary = data[i].summary;
+                        var img = data[i].medium_cover_image;
+
+                        tag += '<div class="movie">';
+                        tag += '<img src="'+ img + '">'
+                        tag += '<div class="inner">'
+                        tag += '<h3 class="title">' + title + '</h3>'
+                        tag += '<h3 class="year">'+ year +'</h3>'
+                        tag += '<ul class="geners">';
+
+                            for(var k in genres) {
+                                tag += '<li>-'+ genres[k] + '</li>';
+                            }
+                        
+                        tag += '</ul>'
+                        tag += '<h3 class="summary">' + summary + '</h3>'
+                        tag += '</div>'
+                        tag += '</div>'
+                    }
+                    // console.log(tag);
+
+                    list.innerHTML = tag;
+                })
+
+        }
+
+        (function() {
+            ajax();
+        })();
+    </script>
+
+</body>
+</html>

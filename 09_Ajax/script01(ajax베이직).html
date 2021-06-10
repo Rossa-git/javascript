@@ -64,7 +64,7 @@
 
 
 
-            //4. 
+            //4. 비동기 함수는 순서대로 실행되지 않는다
             fetch("hi.txt").then(func1);
 
             function func1(response) {
@@ -72,6 +72,9 @@
             }
 
             console.log(2);
+
+            
+
         }
 
     </script>

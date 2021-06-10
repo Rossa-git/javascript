@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <div class="userId"></div>
+    <div class="userName"></div>
+    <button type="button" onclick="ajax();">에이잭스 요청</button>
+
+    <script>
+
+        function ajax() {
+            /*
+            fetch("hi.json").then(function(response) {
+                // console.log(response);
+                
+                //text() - 문서형태로 반환, json() - 객체형태로 반환
+                response.json().then(function(data) {
+                    // console.log(json);
+                    
+                    document.querySelector(".userId").innerHTML = data.userId;
+                    document.querySelector(".userName").innerHTML = data.userName;
+                });
+            });
+            */
+
+            fetch("hi.json")
+                .then(function(response){
+                    return response.json();
+                })
+                .then(function(data){
+                    // return data; //연쇄적으로 사용한다면 리턴을 사용하는게 좋다.
+                    document.querySelector(".userId").innerHTML = data.userId;
+                    document.querySelector(".userName").innerHTML = data.userName;
+                })
+        }
+
+    </script>
+
+</body>
+</html>

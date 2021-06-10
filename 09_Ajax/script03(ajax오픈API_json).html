@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+
+    <h2>서울시 강남구 공공wifi 위치정보</h2>
+
+
+    <script>
+
+        /* 좌표값, 실제주소 */
+        function getFetch() {
+            fetch("http://openapi.seoul.go.kr:8088/4f65646c5a796a72313031695754726f/json/TbPublicWifiInfo_GN/1/1000")
+            .then(function(response) {
+                if(response.status != 200) {
+                    alert("네트워크오류");
+                } else {
+                    return response.json();
+                }
+            })
+            .then(function(jsonData) {
+                console.log(jsonData);
+                var data = jsonData.TbPublicWifiInfo_GN.row;
+
+                for(var i = 0; i < data.length; i++) {
+                    console.log(data[i].LAT, data[i].LNT, data[i].X_SWIFI_ADRES1, data[i].X_SWIFI_ADRES2)
+                }
+            })
+        }
+
+        (function() {
+            getFetch();
+        })();
+
+    </script>
+
+</body>
+</html>
